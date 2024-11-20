@@ -1,0 +1,119 @@
+\documentclass{beamer}
+
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancybox}
+
+\newcommand{\fone}{\sum_{i=0}^{5} \left(100(x_{i+1} - x_{i}^{2})^2 + (1 - x_i)^2\right)}
+\newcommand{\ftwo}{\sum_{i=0}^{99} x_i^4 - 16 x_i^2 + 5 x_i}
+\newcommand{\fthree}{(x_1^2 + x_2 - 11)^2 + (x_1 + x_2^2 - 7)^2}
+\newcommand{\R}{\mathbb{R}}
+
+\usetheme{Pittsburgh}
+\usecolortheme{owl}
+
+\mode<presentation> { \setbeamercovered{transparent} }
+\setbeamertemplate{navigation symbols}{}
+\makeatletter
+\beamer@centeredfalse
+\def\beamerorig@set@color{%
+  \pdfliteral{\current@color}%
+  \aftergroup\reset@color
+}
+\def\beamerorig@reset@color{\pdfliteral{\current@color}}
+
+
+\title[Otimização]
+{Algoritmos de Otimização}
+
+\subtitle{Aplicação de Algoritmos em uma função específica}
+
+\author[Matheus Cardoso]
+{M. Cardoso\inst{1}}
+
+\institute[UFRJ]
+{
+  \inst{1}%
+  Engenharia de Computação e Informação\\
+  Universidade Federal do Rio de Janeiro
+}
+
+\date[2024]
+{Dezembro de 2024}
+
+\begin{document}
+
+
+\frame{\titlepage}
+
+
+\begin{frame}
+\frametitle{As funções}
+
+\begin{align*}
+	\text{min} && f_1(x) &= \fone \\
+	\text{s.a.} && x \in \R^7
+\end{align*}
+
+\begin{align*}
+	\text{min} && f_2(x) &= \ftwo \\
+	\text{s.a.} && x \in \R^{100}
+\end{align*}
+
+\begin{align*}
+	\text{min} && f_3(x) &= \fthree \\
+	\text{s.a.} && x \in \R^2
+\end{align*}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Analisando a função $f_1$}
+
+\begin{align*}
+	f_1(x) &= \fone
+\end{align*} \pause
+
+Percebe-se que:
+\[
+	\left(100(x_{i+1} - x_{i}^{2})^2 + (1 - x_i)^2\right) \geq 0
+\]
+
+Pois $(10(x_{i+1} - x_{i}^{2}))^2 \geq 0$ e 
+$(1 - x_i)^2 \geq 0$. \pause
+
+Mínimo quando ambas são zero. \pause
+
+Na segunda parcela, é preciso que $x_i$ seja igual a 1 ($1 - x_i = 0$). \pause
+
+Consequentemente, $x_{i+1} = 1$ para zerar a primeira parcela. \pause
+
+O $x$ que garante o mínimo será $x^{T} = (1 \ 1 \ 1 \ 1 \ 1 \ 1 \ 1)$
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Analisando a função $f_2$}
+
+\begin{align*}
+	f_2(x) &= \ftwo
+\end{align*} \pause
+
+Como a função:
+\[
+	x_i^4 - 16 x_i^2 + 5 x_i
+\]
+já possui mínimo, o mínimo de $f_2$ será um vetor cujos valores
+serão o $x$ que garante o mínimo para $x^4 - 16 x^2 + 5 x$ \pause
+
+Plotemos
+\end{frame}
+
+\begin{frame}
+\frametitle{Analisando a função $f_2$}
+
+\end{frame}
+
+\end{document}

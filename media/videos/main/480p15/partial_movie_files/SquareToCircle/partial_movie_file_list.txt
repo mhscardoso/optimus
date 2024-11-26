@@ -1,6 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/home/mhscardoso/projects/optimus/media/videos/main/480p15/partial_movie_files/SquareToCircle/1185818338_1791533986_223132457.mp4'
-file 'file:/home/mhscardoso/projects/optimus/media/videos/main/480p15/partial_movie_files/SquareToCircle/624642324_2354374403_1557431736.mp4'
-file 'file:/home/mhscardoso/projects/optimus/media/videos/main/480p15/partial_movie_files/SquareToCircle/624642324_1756110349_2029354895.mp4'
-file 'file:/home/mhscardoso/projects/optimus/media/videos/main/480p15/partial_movie_files/SquareToCircle/624642324_183984657_2029354895.mp4'
-file 'file:/home/mhscardoso/projects/optimus/media/videos/main/480p15/partial_movie_files/SquareToCircle/624642324_67376441_2029354895.mp4'

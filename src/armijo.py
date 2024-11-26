@@ -1,18 +1,22 @@
 import numpy as np
+from src.functions.base import Function
 from typing import Callable
 
 def armijo(
-    f:  Callable[[np.ndarray], float],
-    df: Callable[[np.ndarray], np.ndarray],
-    x:  np.ndarray, 
-    d:  np.ndarray, 
+    f:     Function,
+    x:     np.ndarray, 
+    d:     np.ndarray, 
+    ni:    float,
     gamma: float, 
-    ni: float,
 ):
-    t = 1
-    dx = df(x)
+    t   = 1
+    fx  = f.f(x)
+    dx  = f.df(x)
+    dot = dx @ d
+    k   = 0
 
-    while f(x + t * d) > f(x) + ni * t * np.dot(dx, d.T):
+    while f.f(x + t * d) > (fx + (ni * t * dot)):
         t *= gamma
+        k += 1
     
-    return t
+    return t, k

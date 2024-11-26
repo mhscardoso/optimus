@@ -1,9 +1,10 @@
 import numpy as np
+from numpy.linalg import inv
 from src.functions.base import Function
 from src.common import MIN_FLOAT
 from src.armijo import armijo
 
-def gradient(
+def newton(
     x0:    np.ndarray,
     f:     Function,
     ni:    float,
@@ -12,15 +13,15 @@ def gradient(
     k = 0
     k_armijo = 0
     xk = x0
-    dkm = f.df(xk)
     stop = 0
 
     while True:
         dkm = f.df(xk)
+        hfx = inv(f.hf(xk))
 
-        # --- Método do Gradiente --- #
-        dk = - dkm                    #
-        # --------------------------- #
+        # --- Método de Newton --- #
+        dk = - hfx @ dkm           #
+        # ------------------------ #
 
         tk, k_a = armijo(f, xk, dk, ni, gamma)
         xkm1 = xk + tk * dk
